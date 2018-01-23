@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  table_number: 1
+  waiter_name: MyString
+  order_status: MyString
+
+two:
+  table_number: 1
+  waiter_name: MyString
+  order_status: MyString

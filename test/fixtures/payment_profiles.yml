@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cc_display_number: MyString
+  cc_type: MyString
+  amount: 1
+  payment_method: MyString
+  order: one
+
+two:
+  cc_display_number: MyString
+  cc_type: MyString
+  amount: 1
+  payment_method: MyString
+  order: two

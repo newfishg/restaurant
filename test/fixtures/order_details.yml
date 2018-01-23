@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1
+  order_in: 2018-01-23 23:31:22
+  order_out: 2018-01-23 23:31:22
+  dish: one
+  order: one
+
+two:
+  quantity: 1
+  order_in: 2018-01-23 23:31:22
+  order_out: 2018-01-23 23:31:22
+  dish: two
+  order: two
