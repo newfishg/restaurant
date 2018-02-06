@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id                        :integer          not null, primary key
+#  table_number              :integer
+#  order_status              :string
+#  waiter_name              :string
+#  created_at                :datetime
+#  updated_at                :datetime
+
+
 class Order < ApplicationRecord
   has_one :payment_profile
   has_many :order_details
@@ -5,8 +17,11 @@ class Order < ApplicationRecord
 
   validates_presence_of :table_number
 
+  attr_reader :order_status
+  attr_accessor :waiter_name, :table_number
+
   def update_owner
-    
+    # change owner of this order
   end
 
   def complete_order
@@ -14,10 +29,25 @@ class Order < ApplicationRecord
   end
 
   def change_status
-    # change status of oder
+    # change status of order
   end
 
   def total
     # give whole amount of this order
+    # calculate from payment_profile
   end
 end
+
+# state machine act_as to set/change status
+
+# flowchart flow diagram
+
+# start from user
+
+# real world flow, and how my system handle that request
+
+# use index, can make join table work correctly
+
+# depend on situation you use, 
+
+# mongo db

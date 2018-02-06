@@ -1,10 +1,11 @@
 class OrderController < ApplicationController
   def create
-    # create orders
+    # Create orders
+    # Create a corresponding payment profile
   end
 
   def new
-    # waiter can make a new order
+    # Page waiter can make a new order
   end
 
   def show
@@ -13,5 +14,9 @@ class OrderController < ApplicationController
 
   def destroy
     # Cancel single order
+  end
+
+  def confirmed
+    # Confirmed page after customer finish their order
   end
 end
