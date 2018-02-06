@@ -11,11 +11,30 @@
 
 
 class Order < ApplicationRecord
+  include AASM
+
+  aasm do
+    state :processing, :initial => true
+    state :running, :cleaning
+
+    event :run do
+      transitions :from => :processing, :to => :running
+    end
+
+    event :clean do
+      transitions :from => :running, :to => :cleaning
+    end
+
+    event :cooking do
+      transitions :from => [:running, :cleaning], :to => :processing
+    end
+  end
+
   has_one :payment_profile
   has_many :order_details
   has_many :dishes, through: :order_details
 
-  validates_presence_of :table_number
+  # validates_presence_of :table_number
 
   attr_reader :order_status
   attr_accessor :waiter_name, :table_number
