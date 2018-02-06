@@ -13,7 +13,7 @@
 class Order < ApplicationRecord
   include AASM
 
-  aasm do
+  aasm :column => 'status' do
     state :processing, :initial => true
     state :running, :cleaning
 
