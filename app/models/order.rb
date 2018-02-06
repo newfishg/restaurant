@@ -14,20 +14,21 @@ class Order < ApplicationRecord
   include AASM
 
   aasm :column => 'status' do
-    state :processing, :initial => true
-    state :running, :cleaning
+    state :receive, :initial => true
+    state :cooking, :finish
 
-    event :run do
-      transitions :from => :processing, :to => :running
+    event :cook do
+      transitions :from => :receive, :to => :cooking
     end
 
-    event :clean do
-      transitions :from => :running, :to => :cleaning
+    event :paid do
+      transitions :from => :cooking, :to => :finish
     end
 
-    event :cooking do
-      transitions :from => [:running, :cleaning], :to => :processing
+    event :sleep do
+      transitions :from => [:cooking, :finish], :to => :receive
     end
+
   end
 
   has_one :payment_profile
