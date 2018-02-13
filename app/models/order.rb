@@ -28,8 +28,12 @@ class Order < ApplicationRecord
     event :sleep do
       transitions :from => [:cooking, :finish], :to => :receive
     end
-
   end
+
+  # inform business logic
+  # transition in a certain way
+  # call it and trigger transaction
+
 
   has_one :payment_profile
   has_many :order_details
