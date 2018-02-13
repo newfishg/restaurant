@@ -11,11 +11,35 @@
 
 
 class Order < ApplicationRecord
+  include AASM
+
+  aasm :column => 'status' do
+    state :receive, :initial => true
+    state :cooking, :finish
+
+    event :cook do
+      transitions :from => :receive, :to => :cooking
+    end
+
+    event :paid do
+      transitions :from => :cooking, :to => :finish
+    end
+
+    event :sleep do
+      transitions :from => [:cooking, :finish], :to => :receive
+    end
+  end
+
+  # inform business logic
+  # transition in a certain way
+  # call it and trigger transaction
+
+
   has_one :payment_profile
   has_many :order_details
   has_many :dishes, through: :order_details
 
-  validates_presence_of :table_number
+  # validates_presence_of :table_number
 
   attr_reader :order_status
   attr_accessor :waiter_name, :table_number
